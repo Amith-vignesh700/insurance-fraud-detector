@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insurance Fraud Detection</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 4px; }
+        button { width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; cursor: pointer; }
+        .result { margin-top: 20px; font-weight: bold; text-align: center; color: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>🛡️ Insurance Fraud Predictor</h2>
+        <form action="/predict" method="post">
+            <label>Months as Customer:</label>
+            <input type="number" name="months_as_customer" required>
+            
+            <label>Age:</label>
+            <input type="number" name="age" required>
+            
+            <label>Policy Deductible:</label>
+            <select name="policy_deductable">
+                <option value="500">500</option>
+                <option value="1000">1000</option>
+                <option value="2000">2000</option>
+            </select>
+            
+            <label>Incident Severity:</label>
+            <select name="incident_severity">
+                <option value="Trivial Damage">Trivial Damage</option>
+                <option value="Minor Damage">Minor Damage</option>
+                <option value="Major Damage">Major Damage</option>
+                <option value="Total Loss">Total Loss</option>
+            </select>
+            
+            <label>Total Claim Amount:</label>
+            <input type="number" name="total_claim_amount" required>
+            
+            <button type="submit">Predict Fraud Risk</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">
+                <h3>{{ prediction_text }}</h3>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
